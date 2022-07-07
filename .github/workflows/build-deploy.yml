@@ -79,4 +79,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: 'Deployed WebGL build of `${{ github.repository }}` at: https://${{ secrets.CLOUDFRONT_URL }}/${{ github.repository }}'
+          args: 'Deployed WebGL build of `${{ github.repository }}` at: ${{ secrets.CLOUDFRONT_URL }}/${{ github.repository }}/index.html'
