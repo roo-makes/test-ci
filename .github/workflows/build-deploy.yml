@@ -81,7 +81,7 @@ jobs:
         if: ${{ failure() && env.DISCORD_WEBHOOK != '' && env.DISCORD_WEBHOOK != 'disabled' }}
         uses: Ilshidur/action-discord@0.3.2
         with:
-          args: '❗️ Build failed for `${{ gitub.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} for details.'
+          args: '❗️ Build failed for `${{ github.repository }}` on ${{ github.ref_type }}: `${{ github.ref_name }}`. See https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} for details.'
 
       # Output
       - uses: actions/upload-artifact@v2
