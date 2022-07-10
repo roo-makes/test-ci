@@ -1,0 +1,15 @@
+name: Action Sandbox
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  github-ref:
+    name: Github ref
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo ref
+        run: |
+          echo "github.ref: ${{ github.ref }}""
+          echo "github.ref_name: ${{ github.ref_name }}""
+          echo "github.ref_type: ${{ github.ref_type }}"
