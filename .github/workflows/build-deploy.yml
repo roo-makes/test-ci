@@ -1,6 +1,6 @@
 name: Build & Deploy Unity Project
 
-on: [push, pull_request]
+on: push
 
 jobs:
   build:
@@ -10,6 +10,7 @@ jobs:
       - name: Discord Commit Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        if: ${{ env.DISCORD_WEBHOOK != '' && env.DISCORD_WEBHOOK != 'disabled' }}
         uses: Ilshidur/action-discord@0.3.2
 
       # Checkout (without LFS)
@@ -52,6 +53,7 @@ jobs:
       - name: Discord Build Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        if: ${{ env.DISCORD_WEBHOOK != '' && env.DISCORD_WEBHOOK != 'disabled' }}
         uses: Ilshidur/action-discord@0.3.2
         with:
           args: 'Successfully built `${{ github.repository }}` for WebGL, deploying...'
@@ -77,6 +79,7 @@ jobs:
       - name: Discord Deploy Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        if: ${{ env.DISCORD_WEBHOOK != '' && env.DISCORD_WEBHOOK != 'disabled' }}
         uses: Ilshidur/action-discord@0.3.2
         with:
           args: 'Deployed WebGL build of `${{ github.repository }}` at: ${{ secrets.CLOUDFRONT_URL }}/${{ github.repository }}/index.html'
